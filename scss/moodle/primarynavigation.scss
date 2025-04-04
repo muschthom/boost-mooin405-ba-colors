@@ -3,7 +3,7 @@
         height: $navbar-height;
         .nav-link {
             height: $navbar-height;
-            color: $gray-900;
+            color: var(--secondary-color);
             border-top: 3px solid transparent;
         }
     }
@@ -14,7 +14,7 @@
         display: none;
     }
     .editmode-switch-form label {
-        @include sr-only();
+        @include visually-hidden();
     }
 }
 

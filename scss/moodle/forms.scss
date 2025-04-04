@@ -64,7 +64,7 @@
 }
 
 #adminsettings .error {
-    color: $danger;
+    color: var(--signal-color);
 }
 
 .mform ul.file-list {
@@ -115,6 +115,7 @@ input#id_externalurl {
 
 .form-item .form-setting .defaultsnext > input {
     display: inline-block;
+    background-color: #eae9e9;
 }
 
 .form-item .form-setting .form-checkbox.defaultsnext {

@@ -59,7 +59,7 @@
         color: $success;
     }
     .gradefail {
-        color: $danger;
+        color: var(--signal-color);
     }
 }
 

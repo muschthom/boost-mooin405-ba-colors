@@ -328,7 +328,7 @@ $author-image-margin-sm: 8px;
 
     /** Don't show the discussion locked alert in this mode because it's already indicated with a badge. */
     .alert.discussionlocked {
-        @include sr-only();
+        @include visually-hidden();
     }
 
     /** Fix muted text contrast ratios for accessibility. */
@@ -347,7 +347,7 @@ $author-image-margin-sm: 8px;
 
     /** Make the tag list text screen reader visible only */
     .tag_list > b {
-        @include sr-only();
+        @include visually-hidden();
     }
 
     :target > .focus-target {
@@ -967,10 +967,6 @@ $grading-content-show-content-button-padding-left: calc(#{map-get($spacers, 2) *
     text-align: inherit;
 }
 
-#page-mod-chat-gui_basic input#message {
-    max-width: 100%;
-}
-
 #page-mod-data-view #singleimage {
     width: auto;
 }
@@ -1052,25 +1048,6 @@ div#dock {
 
 .path-mod-wiki .wiki_contentbox {
     width: 100%;
-}
-
-// Survey module
-
-.path-mod-survey {
-    .surveytable {
-        > tbody > tr:nth-of-type(odd) {
-            background-color: $table-bg;
-        }
-
-        > tbody > tr:nth-of-type(even) {
-            background-color: $table-accent-bg;
-        }
-
-        .rblock label {
-            text-align: center;
-        }
-    }
-
 }
 
 .nav .caret {
@@ -1263,10 +1240,6 @@ img.userpicture {
         border-width: 1px;
     }
 
-    .qnbutton.flagged .thispageholder {
-        background: transparent url([[pix:theme|mod/quiz/flag-on]]) 15px 0 no-repeat;
-    }
-
     .qnbutton .trafficlight {
         border: 0;
         background: $card-bg none center / 10px no-repeat scroll;
@@ -1280,7 +1253,7 @@ img.userpicture {
     }
 
     .qnbutton.incorrect .thispageholder {
-        border-color: shift-color($danger, 10%);
+        border-color: var(--signal-color), 10%;
     }
 
     .qnbutton.partiallycorrect .thispageholder {
@@ -1318,10 +1291,6 @@ img.userpicture {
         background-color: $card-bg;
     }
 
-    .qnbutton.invalidanswer .trafficlight {
-        background-image: url([[pix:theme|mod/quiz/warningtriangle]]);
-    }
-
     .qnbutton.correct .trafficlight {
         background-image: url([[pix:core|i/grade_correct]]);
         color: $success;
@@ -1335,7 +1304,7 @@ img.userpicture {
     .qnbutton.notanswered .trafficlight,
     .qnbutton.incorrect .trafficlight {
         background-image: url([[pix:core|i/grade_incorrect]]);
-        color: $danger;
+        color: var(--signal-color);
         background-size: 14px;
     }
 
@@ -1369,7 +1338,7 @@ img.userpicture {
         color: shift-color($success, 10%) !important; /* stylelint-disable-line declaration-no-important */
     }
     .icon.text-danger {
-        color: shift-color($danger, 10%) !important; /* stylelint-disable-line declaration-no-important */
+        color:var(--signal-color) !important; /* stylelint-disable-line declaration-no-important */
     }
     .icon.text-warning {
         color: shift-color($warning, 40%) !important; /* stylelint-disable-line declaration-no-important */
@@ -1580,7 +1549,7 @@ $popout-header-height: 4rem;
         background: $gray-600;
     }
     span.feedback_depend {
-        color: $danger;
+        color: var(--signal-color);
     }
     hr.feedback_pagebreak {
         height: 4px;
@@ -1588,12 +1557,6 @@ $popout-header-height: 4rem;
         background-color: $gray-600;
         border: 0;
         margin: 0;
-    }
-    .drag_target_active {
-        opacity: .25;
-    }
-    .drag_item_active {
-        opacity: .5;
     }
     .feedback_bar_image {
         height: 10px;
@@ -1611,38 +1574,63 @@ $popout-header-height: 4rem;
             width: 10%;
         }
     }
-    .feedback_form {
-        .itemactions {
-            display: inline-block;
-            margin: 0 map-get($spacers, 2);
-        }
-    }
     .feedback-item-label {
         width: 100%;
     }
     // Feedback edit form.
     #feedback_edit_form {
-        [id*=_feedback_item_].feedback_itemlist {
+        [id*=_feedback_item_].feedback_itemlist,
+        .feedback_itemlist.sortable-list-is-dragged {
             padding: map-get($spacers, 3);
             border: $border-width solid $border-color;
+            background-color: $white;
+            position: relative;
             @include border-radius();
-            .itemhandle {
-                position: absolute;
-                width: 32px;
-                height: 32px;
-                text-align: center;
-                align-content: center;
+            .itemname {
+                margin-right: map-get($spacers, 5);
             }
-            .action-menu {
+            .itemactions {
                 position: absolute;
                 top: 0;
                 right: 0;
+                .dropdown-toggle {
+                    @include border-radius(.5rem);
+                    width: $icon-medium-width;
+                    height: $icon-medium-height;
+                }
             }
-            .dropdown-toggle {
-                border-radius: .5rem;
-                width: 32px;
-                height: 32px;
+            &.sortable-list-current-position {
+                background-color: $light;
             }
+        }
+        .sortable-list-is-dragged {
+            opacity: .75;
+            max-width: $course-content-maxwidth;
+        }
+        .loading-icon {
+            position: absolute;
+            left: 50%;
+            top: calc(50% - .5rem);
+        }
+    }
+
+    // Templates page.
+    &#page-mod-feedback-manage_templates {
+        .coursetemplates,
+        .publictemplates {
+            .no-overflow {
+                overflow: visible;
+            }
+            .action-menu .menubar {
+                justify-content: end;
+            }
+        }
+    }
+    &#page-mod-feedback-manage_templates,
+    &#page-mod-feedback-use_templ {
+        .dropdown-item:hover a.text-danger {
+            color: var(--signal-color) !important;/* stylelint-disable-line declaration-no-important */
+            text-decoration: none;
         }
     }
 

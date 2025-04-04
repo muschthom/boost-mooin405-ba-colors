@@ -236,6 +236,7 @@ div.editor_atto_content:hover .atto_control {
     So they need these extra styles to highlight the editor when there is a validation error. */
 .has-danger .editor_atto_content.form-control,
 .has-danger .editor_atto_content.form-control-danger {
+    color: var(--signal-color);
     @include form-validation-state('invalid', $form-feedback-invalid-color, $form-feedback-icon-invalid);
 }
 

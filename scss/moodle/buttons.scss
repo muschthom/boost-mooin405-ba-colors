@@ -64,10 +64,11 @@ p.arrow_button {
 
 // Specific styles for the collapse/expand buttons.
 .btn.btn-icon.icons-collapse-expand {
-    color: $primary;
-    background-color: $primary-light-background;
+    color: var(--secondary-color);
+    background-color: var(--primary-light);
     &:hover {
-        outline: 2px solid $primary;
+        outline: 2px solid;
+        outline-color: var(--secondary-color);
     }
 }
 

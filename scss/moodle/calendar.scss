@@ -75,7 +75,7 @@ $calendarCurrentDateBackground: $primary;
 @mixin footer-links {
     span.footer-link:after {
         content: "\2022";
-        color: $primary;
+        color: var(--secondary-color);
     }
 
     span.footer-link:last-child:after {
@@ -278,7 +278,7 @@ $calendarCurrentDateBackground: $primary;
                 .day-number-circle {
                     border-radius: 50%;
                     color: $calendarCurrentDateColor;
-                    background-color: $calendarCurrentDateBackground;
+                    background-color: var(--primary-color);
                 }
             }
         }
@@ -557,7 +557,7 @@ $calendarCurrentDateBackground: $primary;
                 }
                 .calendarwrapper {
                     .arrow_text {
-                        @include sr-only;
+                        @include visually-hidden;
                     }
                 }
             }

@@ -254,7 +254,7 @@
     .active > .nav-link,
     .nav-link.show,
     .nav-link.active {
-      color: $navbar-light-active-color;
+      color: var(--secondary-color);
     }
   }
 

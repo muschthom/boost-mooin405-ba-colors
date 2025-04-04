@@ -466,7 +466,7 @@ $message-day-color: color-yiq($message-app-bg) !default;
 
     a,
     .btn-link {
-        color: inherit;
+        color: var(--secondary-color);
     }
     .btn-link {
         &:hover,

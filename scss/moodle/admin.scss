@@ -494,7 +494,7 @@
 
         .uninstall {
             a {
-                color: $danger;
+                color: var(--signal-color);
             }
         }
 

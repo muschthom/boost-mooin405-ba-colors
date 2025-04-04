@@ -5,6 +5,7 @@
         opacity: 1;
     }
     .nav-link {
+        color: var(--secondary-color);
         height: $moremenu-height;
         display: flex;
         align-items: center;
@@ -12,19 +13,24 @@
         border-bottom: solid 3px transparent;
         border-left: none;
         border-top: none;
-        &:hover,
+        &:hover{
+            background-color: var(--primary-light);
+            border-bottom-color: transparent;
+        }
         &:focus {
+            box-shadow: var(--secondary-color);
             @include hover-navbar();
         }
 
         &.active {
             background-color: $gray-100;
             border-color: transparent;
-            border-bottom-color: $primary;
+            border-bottom-color: var(--secondary-color);
+            color: var(--secondary-color);
             &:focus,
             &:hover {
-                background-color: $gray-100;
-                border-bottom-color: $primary;
+                background-color: var(--primary-light);
+                border-bottom-color: var(--primary-color);
             }
         }
         &.focus,
@@ -95,7 +101,7 @@
         color: $dropdown-link-color;
         &:focus-within,
         &:hover {
-            background-color: $dropdown-link-active-bg;
+            background-color: var(--secondary-color);
             color: $dropdown-link-active-color;
             a {
                 color: $dropdown-link-active-color;

@@ -89,7 +89,7 @@ $border-radius-lg: .6rem !default;
 // stylelint-disable
 $theme-colors: () !default;
 $theme-colors: map-merge((
-    primary: $primary,
+    primarary: $primary,
     secondary: $secondary,
     success: $success,
     info: $info,
@@ -138,8 +138,18 @@ body {
 // the secondary outline button because gray-200 is much too light
 // for an outline button.
 .btn-outline-secondary {
+
     @include button-outline-variant($gray-600);
-    border-color: $gray-600;
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+
+    &:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+        background-color: transparent;
+    }
+
+
 }
 
 .btn-outline-info {

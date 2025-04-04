@@ -15,12 +15,13 @@ $courseindex-item-current: $primary !default;
 @mixin courseindex-item-hover() {
     &:hover,
     &:focus {
-        color: $courseindex-link-hover-color;
-
+        //color: $courseindex-link-hover-color;
+        color: var(--primary-color);
         .courseindex-link,
         .courseindex-chevron {
-            color: $courseindex-link-hover-color;
+            color: var(--secondary-color);
             cursor: pointer;
+
         }
         &.dimmed {
             color: $courseindex-link-hover-color;
@@ -37,11 +38,13 @@ $courseindex-item-current: $primary !default;
         .pageitem {
             background-color: darken($courseindex-item-page-bg, 7.5%);
             color: darken($courseindex-link-color-selected, 10%);
+            //color: var(--secondary-color);
             .courseindex-link,
             .courseindex-chevron {
-                color: darken($courseindex-link-color-selected, 10%);
+                //color: darken($courseindex-link-color-selected, 10%);
                 a {
-                    color: darken($courseindex-link-color-selected, 10%);
+                    color: var(--secondary-color);
+                    //color: darken($courseindex-link-color-selected, 10%);
                 }
             }
         }
@@ -72,8 +75,13 @@ $courseindex-item-current: $primary !default;
 
         .courseindex-link,
         .courseindex-chevron {
-            color: $courseindex-link-color;
-            &:hover,
+            //color: $courseindex-link-color;
+            color: var(--secondary-color);
+
+            &:hover {
+                color: var(--primary-color) !important;
+            }
+            
             &:focus {
                 color: $courseindex-link-hover-color;
                 text-decoration: none;
@@ -86,7 +94,8 @@ $courseindex-item-current: $primary !default;
 
         &.active {
             background-color: $courseindex-item-active-bg;
-            border-color: $courseindex-item-active-border;
+            //border-color: $courseindex-item-active-border;
+            border-color: var(--secondary-color);
         }
 
         // Hidden elements.
@@ -100,10 +109,10 @@ $courseindex-item-current: $primary !default;
 
             // Current page dimmed item.
             &.pageitem {
-                color: $courseindex-link-color-selected;
-
+                color: #ffffff;
                 a {
-                    color: $courseindex-link-color-selected;
+                    color: #ffffff;
+                    //color: var(--secondary-color);
                 }
             }
         }
@@ -120,11 +129,13 @@ $courseindex-item-current: $primary !default;
 
         // Current page item.
         &.pageitem {
-            background-color: $courseindex-item-page-bg;
+            //background-color: $courseindex-item-page-bg;
+            background-color: var(--secondary-color) !important;
+            //color: var(--secondary-color);
             color: $courseindex-link-color-selected;
             scroll-margin: 6rem;
             a {
-                color: $courseindex-link-color-selected;
+                color: #ffffff;
             }
         }
 
@@ -137,7 +148,7 @@ $courseindex-item-current: $primary !default;
             }
 
             &.completion_fail {
-                color: $danger;
+                color: var(--signal-color);
             }
         }
 

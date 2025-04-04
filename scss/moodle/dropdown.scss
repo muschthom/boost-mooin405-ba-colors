@@ -11,11 +11,13 @@
     }
     &.active,
     &:active,
-    &:hover,
+    &:hover{
+        background-color: var(--secondary-color);
+    }
     &:focus,
     &:focus-within {
         outline: 0;
-        background-color: $dropdown-link-active-bg;
+        background-color: var(--secondary-color);
         color: $dropdown-link-active-color;
         a {
             color: $dropdown-link-active-color;
